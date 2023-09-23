@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@300&display=swap');
+
+// Variables
+$var1: 100%;
+$letras: #ffffff;
+$navbar-background: #000000;
+$footer-background: #000000;
+$body: url('../img/wallpaper2.png');
+$color-link: orangered;
+
+// Mixins
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
+}
+
+@mixin background-properties {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+// Global 
+* {
+  @include reset;
+}
+
+body {
+  @include reset;
+  margin: 0;
+  padding: 0;
+  max-width: $var1;
+  overflow-x: hidden;
+  background-image: $body;
+  @include background-properties;
+}
+
+.navbar {
+  @include reset;
+  max-width: $var1;
+  overflow-x: hidden;
+}
+
+header {
+  margin-top: 70px;
+}
+
+nav {
+  background-color: $navbar-background;
+}
+
+.navbar-nav .nav-link,
+.nav-link {
+  color: $letras;
+}
+
+.nav-item:hover .nav-link {
+  color: $color-link;
+}
+
+.navbar-toggler {
+  background-color: $color-link;
+}
+
+.navbar-toggler-icon {
+  color: $color-link;
+}
+
+.carousel-inner .carousel-item img {
+  max-width: $var1;
+  height: 520px;
+  padding-top: 50px;
+  margin-bottom: 47px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: $color-link; 
+}
+
+.gallery-item {
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+  transform: scale(1.1);
+}
+
+.gallery-item img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.special-margin {
+  margin-bottom: 20px;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  width: $var1;
+  padding-top: $var1;
+}
+
+.image {
+  @include reset;
+  @include background-properties;
+  transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $var1;
+  height: $var1;
+  object-fit: cover;
+}
+
+.image2 {
+  @include reset;
+  @include background-properties;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $var1;
+  height: $var1;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-content {
+  color: #fff;
+  text-align: center;
+}
+
+.image-container:hover .image {
+  transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.formulario {
+  padding: 5%;
+}
+
+.btn.btn-light {
+  font-weight: bold;
+  border: black 1px solid;
+}
+
+.btn.btn-light:hover {
+  color: $color-link;
+}
+
+footer {
+  background-color: $footer-background;
+}
+
+.texto-footer {
+  font-size: 15px;
+}
+
+.footer a:hover .fab.fa-facebook-f {
+  color: rgb(46, 77, 214);
+  transition: color 0.2s ease-in-out;
+}
+
+.footer a:hover .fab.fa-instagram {
+  color: palevioletred;
+  transition: color 0.2s ease-in-out;
+}
+
+
+// Mixins
+@mixin carousel-img-styles($max-height, $margin-top, $margin-bottom) {
+    max-height: $max-height;
+    margin-top: $margin-top;
+    margin-bottom: $margin-bottom;
+  }
+  
+  @mixin h1galeria-styles($padding-top, $padding-bottom) {
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+  }
+  
+  // Media Queries
+  @media (max-width: 378px) {
+    .carousel-inner .carousel-item img {
+      @include carousel-img-styles(250px, 17px, 20px);
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .carousel-inner .carousel-item img {
+      @include carousel-img-styles(32vh, 17px, 20px);
+    }
+  
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(32vh, 17px, 20px);
+    }
+  }
+  
+  @media (max-width: 450px) {
+    .carousel-inner .carousel-item img {
+      @include carousel-img-styles(40vh, 15px, 20px);
+    }
+  
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(40vh, 15px, 20px);
+    }
+  }
+  
+  @media (max-width: 518px) {
+    .carousel-inner .carousel-item img,
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(40vh, 13px, 20px);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .carousel-inner .carousel-item img,
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(40vh, 0, 20px);
+    }
+  
+    .h1galeria {
+      @include h1galeria-styles(7%, 3%);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-inner .carousel-item img,
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(40vh, 0, 20px);
+    }
+  
+    .h1galeria {
+      @include h1galeria-styles(8%, 2%);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .carousel-inner .carousel-item img,
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(50vh, 30px, 30px);
+    }
+  
+    .h1galeria {
+      @include h1galeria-styles(5%, 0);
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .carousel-inner .carousel-item img,
+    .carousel-inner2 .carousel-item2 img {
+      @include carousel-img-styles(70vh, 0, 0);
+    }
+  
+    .h1galeria {
+      @include h1galeria-styles(50%, 3%);
+    }
+  }
+  
+  @media (max-width: 1201px) {
+    .h1galeria {
+      @include h1galeria-styles(7%, 3%);
+    }
+  }
+  
+  @media (max-width: 1250px) {
+    .h1galeria {
+      @include h1galeria-styles(7%, 3%);
+    }
+  }
+  
+
+
+
+
+
+
+
